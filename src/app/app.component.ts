@@ -14,11 +14,8 @@ declare var $: any;
 })
 export class AppComponent {
   title = 'client';
-  constructor(private toastrService: CustomToastrService) {
-    this.toastrService.message("Merhaba", "Gencay", {
-      messageType: ToastrMessageType.Error,
-      position: ToastrPosition.TopCenter
-    })
+  constructor() {
+
   }
 }
 
