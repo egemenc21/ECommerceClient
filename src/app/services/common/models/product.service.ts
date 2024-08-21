@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClientService } from '../http-client.service';
 import { Create_Product } from '../../../contracts/create_product';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { lastValueFrom, Observable } from 'rxjs';
+import { List_Product } from '../../../contracts/list_product';
+import { resolve } from '@angular/compiler-cli';
 
 @Injectable({
   providedIn: 'root',
@@ -39,5 +41,29 @@ export class ProductService {
           errorCallBack(message);
         },
       });
+  }
+
+  async read(
+    page:number = 0,
+    size:number = 5,
+    successCallBack?: () => void,
+    errorCallBack?: (errorMessage: string) => void
+  ): Promise<{totalCount:number, products: List_Product[]}> {
+
+    const observable = this.httpClientService.get<{totalCount:number, products: List_Product[]} >({
+      controller: 'products',
+      queryString: `page=${page}&size=${size}`,
+    });
+
+    try {
+      const result = await lastValueFrom(observable);
+      if (successCallBack) successCallBack();
+      return result;
+    } catch (error) {
+      if (errorCallBack && error instanceof HttpErrorResponse) {
+        errorCallBack(error.message);
+      }
+      throw error;
+    }
   }
 }

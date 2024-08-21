@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
 import { ProductService } from '../../../../services/common/models/product.service';
 import { Create_Product } from '../../../../contracts/create_product';
 import { BaseComponent, SpinnerType } from '../../../../base/base.component';
@@ -23,6 +23,8 @@ export class CreateComponent extends BaseComponent {
     super(spinner);
   }
 
+  @Output() createdProduct  = new EventEmitter<Create_Product>();
+
   create(
     name: HTMLInputElement,
     stock: HTMLInputElement,
@@ -43,6 +45,8 @@ export class CreateComponent extends BaseComponent {
           messageType: MessageType.Success,
           position: Position.TopRight,
         });
+
+        this.createdProduct.emit(create_product)
       },
       (errorMessage) => {
 
