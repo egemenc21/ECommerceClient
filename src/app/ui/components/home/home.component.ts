@@ -13,6 +13,6 @@ export class HomeComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.showSpinner(SpinnerType.BallAtom);
+
   }
 }

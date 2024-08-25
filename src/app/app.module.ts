@@ -10,6 +10,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import {ToastrModule} from "ngx-toastr";
 import { NgxSpinnerModule} from "ngx-spinner";
 import {HttpClientModule} from "@angular/common/http";
+import { DeleteDirective } from './directives/admin/delete.directive';
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import {HttpClientModule} from "@angular/common/http";
     UiModule,
     ToastrModule.forRoot(),
     NgxSpinnerModule,
-    HttpClientModule
+    HttpClientModule,
+    MatIconModule
   ],
   providers: [
     provideAnimationsAsync(),

@@ -10,6 +10,8 @@ import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatButtonModule} from "@angular/material/button";
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatIconModule} from "@angular/material/icon";
+import {DeleteDirective} from "../../../directives/admin/delete.directive";
 
 
 @NgModule({
@@ -17,6 +19,7 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     ProductsComponent,
     CreateComponent,
     ListComponent,
+    DeleteDirective
   ],
   imports: [
     CommonModule,
@@ -28,7 +31,8 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatFormFieldModule,
     MatButtonModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatIconModule,
 
 
   ]

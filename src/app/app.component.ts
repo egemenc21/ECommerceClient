@@ -13,5 +13,3 @@ export class AppComponent {
   constructor() {}
 }
 
-// $.get('https://localhost:7027/api/Product').then((response: Response) => {
-//   console.log(response)})
